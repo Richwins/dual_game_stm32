@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation SYS3046 - Jeu de Duel STM32</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e2e8f0;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 50px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            text-decoration: none;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: #fbbf24;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+        }
+        .lang-btn .flag {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        .lang-btn .lang-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .lang-btn .lang-sub {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Documentation SYS3046</h1>
+        <p class="subtitle">Jeu de Duel STM32 / STM32 Duel Game</p>
+        
+        <div class="lang-buttons">
+            <a href="fr/html/index.html" class="lang-btn">
+                <span class="flag">🇫🇷</span>
+                <span class="lang-name">Français</span>
+                <span class="lang-sub">Documentation en français</span>
+            </a>
+            <a href="en/html/index.html" class="lang-btn">
+                <span class="flag">🇬🇧</span>
+                <span class="lang-name">English</span>
+                <span class="lang-sub">English documentation</span>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>SESSOU Winsou Richard & MAZIRE Tristan — ESIEA 2026</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!-- HTML header for doxygen - French version -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projet SYS3046 – Jeu de Duel STM32</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<style>
+.lang-switcher {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 9999;
+  background: #2d3748;
+  padding: 8px 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.lang-switcher a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+.lang-switcher a:hover {
+  color: #fbbf24;
+}
+.lang-switcher .current {
+  color: #fbbf24;
+  margin-right: 10px;
+}
+</style>
+</head>
+<body>
+<div class="lang-switcher">
+  <span class="current">🇫🇷 FR</span>
+  <a href="../../en/html/index.html">🇬🇧 EN</a>
+</div>
+<div id="top">
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Projet SYS3046 – Jeu de Duel STM32 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="intro_sec"></a>
+Présentation générale</h1>
+<p>Ce projet regroupe deux sous-systèmes complémentaires qui forment ensemble un <b>jeu de duel multijoueur</b> piloté par des cartes STM32 :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Sous-système  </th><th class="markdownTableHeadNone">Technologie  </th><th class="markdownTableHeadNone">Rôle  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="group__grp__micro.html" title="Firmware STM32">Firmware STM32</a>  </td><td class="markdownTableBodyNone">C / STM32L053  </td><td class="markdownTableBodyNone">Lecture joystick, LEDs de vie, communication UART  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="group__grp__jeu.html" title="Interface Web">Interface Web</a>  </td><td class="markdownTableBodyNone">Vue.js / Node.js  </td><td class="markdownTableBodyNone">Logique de jeu, rendu, pont WebSocket ↔ série  </td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="ui_sec"></a>
+Aperçu de l'interface</h1>
+<div class="image">
+<img src="ui.png" alt=""/>
+<div class="caption">
+Interface du jeu de duel – Vue en cours de partie</div></div>
+ <p>L'interface affiche :</p><ul>
+<li><b>En haut</b> : HUD des deux joueurs (nom, barre de vie, LEDs, score) + chronomètre central</li>
+<li><b>Au centre</b> : Arène de jeu avec les deux avions et la zone neutre</li>
+<li><b>En bas</b> : Contrôles clavier, boutons de gestion et journal des événements</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="archi_sec"></a>
+Architecture globale</h1>
+<div class="fragment"><div class="line">┌─────────────────────────────────┐                ┌──────────────────────┐</div>
+<div class="line">│      STM32L053 - Joueur 1       │  UART 115200   │                      │</div>
+<div class="line">│         (COM6)                  │ ─────────────► │                      │</div>
+<div class="line">│  ┌───────────┐  ┌───────────┐   │ ◄───────────── │    server.js         │</div>
+<div class="line">│  │ Joystick  │  │  Bouton   │   │   <span class="charliteral">&#39;L&#39;</span> / <span class="charliteral">&#39;B&#39;</span>    │    (Node.js)         │</div>
+<div class="line">│  │ PA0 (X)   │  │   PA4     │   │                │                      │</div>
+<div class="line">│  │ PA1 (Y)   │  └───────────┘   │                │                      │   WebSocket</div>
+<div class="line">│  └───────────┘                  │                │                      │ ◄──────────► Navigateur</div>
+<div class="line">│  ┌─────────────────────────┐    │                │                      │              (Vue.js)</div>
+<div class="line">│  │ 3 LEDs: PB6, PC7, PA9   │    │                │                      │</div>
+<div class="line">│  │ Buzzer: PC0             │    │                │                      │</div>
+<div class="line">│  └─────────────────────────┘    │                │                      │</div>
+<div class="line">└─────────────────────────────────┘                │                      │</div>
+<div class="line">                                                   │                      │</div>
+<div class="line">┌─────────────────────────────────┐                │                      │</div>
+<div class="line">│      STM32L053 - Joueur 2       │  UART 115200   │                      │</div>
+<div class="line">│         (COM7)                  │ ─────────────► │                      │</div>
+<div class="line">│  ┌───────────┐  ┌───────────┐   │ ◄───────────── │                      │</div>
+<div class="line">│  │ Joystick  │  │  Bouton   │   │   <span class="charliteral">&#39;L&#39;</span> / <span class="charliteral">&#39;B&#39;</span>    │                      │</div>
+<div class="line">│  │ PA0 (X)   │  │   PA4     │   │                │                      │</div>
+<div class="line">│  │ PA1 (Y)   │  └───────────┘   │                └──────────────────────┘</div>
+<div class="line">│  └───────────┘                  │</div>
+<div class="line">│  ┌─────────────────────────┐    │</div>
+<div class="line">│  │ 3 LEDs: PB6, PC7, PA9   │    │    + Chronomètre (T\n chaque seconde)</div>
+<div class="line">│  │ Buzzer: PC0             │    │</div>
+<div class="line">│  └─────────────────────────┘    │</div>
+<div class="line">└─────────────────────────────────┘</div>
+</div><!-- fragment --><p><b>Composants par joueur :</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Composant  </th><th class="markdownTableHeadNone">Broches  </th><th class="markdownTableHeadNone">Fonction  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Joystick  </td><td class="markdownTableBodyNone">PA0 (X), PA1 (Y)  </td><td class="markdownTableBodyNone">Déplacement (UP/DOWN/LEFT/RIGHT)  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Bouton poussoir  </td><td class="markdownTableBodyNone">PA4  </td><td class="markdownTableBodyNone">Tir (envoie '1') / Relancer la manche  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED vie 1  </td><td class="markdownTableBodyNone">PB6  </td><td class="markdownTableBodyNone">S'éteint sous 21 pts  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LED vie 2  </td><td class="markdownTableBodyNone">PC7  </td><td class="markdownTableBodyNone">S'éteint sous 11 pts  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED vie 3  </td><td class="markdownTableBodyNone">PA9  </td><td class="markdownTableBodyNone">S'éteint sous 1 pt  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Buzzer  </td><td class="markdownTableBodyNone">PC0  </td><td class="markdownTableBodyNone">Signal fin de manche ('B')  </td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="nav_sec"></a>
+Navigation dans la documentation</h1>
+<p>Utilisez les onglets ci-dessus pour parcourir :</p><ul>
+<li><b>Modules</b> : vue organisée par <a class="el" href="group__grp__micro.html" title="Firmware STM32">Firmware STM32</a> et <a class="el" href="group__grp__jeu.html" title="Interface Web">Interface Web</a></li>
+<li><b>Fichiers</b> : tous les fichiers sources des deux projets</li>
+<li><b>Fonctions</b> : index global de toutes les fonctions</li>
+</ul>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="rules_sec"></a>
+Règles du jeu</h1>
+<ul>
+<li>Chaque joueur commence avec <b>30 points</b> (= 3 LEDs allumées).</li>
+<li>Chaque touche adverse retire <b>1 point</b>.</li>
+<li>Quand le score passe sous un seuil de 10 : <b>une LED s'éteint</b>.</li>
+<li>Score = 0 → joueur éliminé → fin de manche.</li>
+<li>Appuyer sur le <b>bouton de tir (1)</b> après la victoire relance une manche.</li>
+</ul>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="hw_sec"></a>
+Matériel et protocole série</h1>
+<h2 class="doxsection"><a class="anchor" id="hw_joystick"></a>
+Joystick analogique</h2>
+<p>Le joystick est connecté sur les entrées ADC :</p><ul>
+<li><b>PA0 (ADC_IN0)</b> : axe X</li>
+<li><b>PA1 (ADC_IN1)</b> : axe Y</li>
+</ul>
+<p>Le firmware lit les valeurs ADC (0–4095) et envoie une direction : </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Valeur ADC  </th><th class="markdownTableHeadNone">Direction envoyée  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">vx &lt; 1900  </td><td class="markdownTableBodyNone"><span class="tt">DOWN\n</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">vx &gt; 2200  </td><td class="markdownTableBodyNone"><span class="tt">UP\n</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">vy &lt; 1900  </td><td class="markdownTableBodyNone"><span class="tt">RIGHT\n</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">vy &gt; 2200  </td><td class="markdownTableBodyNone"><span class="tt">LEFT\n</span>  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="hw_button"></a>
+Bouton de tir</h2>
+<ul>
+<li><b>PA4</b> : entrée digitale, actif haut</li>
+<li>Envoie <span class="tt">1\n</span> quand pressé</li>
+<li>Utilisé pour tirer pendant le jeu ou relancer après une victoire</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="hw_leds"></a>
+LEDs de vie</h2>
+<p>Trois LEDs représentent les vies du joueur : </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">LED  </th><th class="markdownTableHeadNone">Broche  </th><th class="markdownTableHeadNone">Seuil de points  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED 1  </td><td class="markdownTableBodyNone">PB6  </td><td class="markdownTableBodyNone">21–30 pts  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LED 2  </td><td class="markdownTableBodyNone">PC7  </td><td class="markdownTableBodyNone">11–20 pts  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED 3  </td><td class="markdownTableBodyNone">PA9  </td><td class="markdownTableBodyNone">1–10 pts  </td></tr>
+</table>
+<p>Commande reçue : <b>'L'</b> → éteint la prochaine LED (avec clignotement)</p>
+<h2 class="doxsection"><a class="anchor" id="hw_buzzer"></a>
+Buzzer</h2>
+<ul>
+<li><b>PC0</b> : sortie digitale (buzzer ou LED de signalisation)</li>
+<li>Commande reçue : <b>'B'</b> → clignotement 3× puis reset des LEDs</li>
+<li>Utilisé en fin de manche pour signaler la victoire</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="hw_timer"></a>
+Chronomètre (Joueur 2 uniquement)</h2>
+<ul>
+<li>Le STM32 du joueur 2 envoie automatiquement **'T<br  />
+'** toutes les secondes</li>
+<li>Utilise la fonction <span class="tt"><a class="el" href="stm32l0xx__it_8h.html#acf6b17788c55de7b495d755904824100">timeur()</a></span> pour mesurer le temps écoulé</li>
+<li>Le temps total s'affiche en haut de l'écran au format <span class="tt">HH:MM:SS</span></li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="hw_proto"></a>
+Récapitulatif du protocole</h2>
+<p><b>STM32 → PC (messages envoyés via UART) :</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Message  </th><th class="markdownTableHeadNone">Signification  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">UP\n</span>  </td><td class="markdownTableBodyNone">Joystick vers le haut  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">DOWN\n</span>  </td><td class="markdownTableBodyNone">Joystick vers le bas  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">LEFT\n</span>  </td><td class="markdownTableBodyNone">Joystick vers la gauche  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">RIGHT\n</span>  </td><td class="markdownTableBodyNone">Joystick vers la droite  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">1\n</span>  </td><td class="markdownTableBodyNone">Bouton de tir pressé  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">T\n</span>  </td><td class="markdownTableBodyNone">Tick chronomètre automatique (joueur 2, chaque seconde)  </td></tr>
+</table>
+<p><b>PC → STM32 (commandes reçues via UART) :</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Commande  </th><th class="markdownTableHeadNone">Effet  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">L</span>  </td><td class="markdownTableBodyNone">Éteint la prochaine LED (avec clignotement)  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">B</span>  </td><td class="markdownTableBodyNone">Buzzer fin de manche + reset LEDs  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="install_sec"></a>
+Installation et lancement</h1>
+<h2 class="doxsection"><a class="anchor" id="install_prereq"></a>
+Prérequis</h2>
+<ul>
+<li><b>Node.js</b> v18+ installé (<a href="https://nodejs.org">nodejs.org</a>)</li>
+<li><b>npm</b> (inclus avec Node.js)</li>
+<li>Deux cartes <b>STM32L053</b> flashées avec le firmware <span class="tt">Microcontroleurs</span></li>
+<li>Câbles USB connectés aux ports série (ex: COM6, COM7)</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="install_server"></a>
+1. Serveur WebSocket (pont série)</h2>
+<div class="fragment"><div class="line">cd jeu/server</div>
+<div class="line">npm install          # installe serialport, ws</div>
+</div><!-- fragment --><p>Modifier <span class="tt"><a class="el" href="server_8js.html">server.js</a></span> si vos ports COM sont différents : </p><div class="fragment"><div class="line">const PLAYERS = [</div>
+<div class="line">  { id: 1, path: &quot;COM6&quot;, baudRate: 115200 },</div>
+<div class="line">  { id: 2, path: &quot;COM7&quot;, baudRate: 115200 }</div>
+<div class="line">];</div>
+</div><!-- fragment --><p>Lancer le serveur : </p><div class="fragment"><div class="line">node server.js       # affiche &quot;Serveur WebSocket lancé : ws://localhost:3000&quot;</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="install_web"></a>
+2. Interface Web (Vue.js)</h2>
+<div class="fragment"><div class="line">cd jeu</div>
+<div class="line">npm install          # installe Vue, Vite et dépendances</div>
+<div class="line">npm run dev          # démarre le serveur de développement (http://localhost:5173)</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="install_run"></a>
+3. Jouer</h2>
+<ol type="1">
+<li>Brancher les deux cartes STM32 en USB</li>
+<li>Lancer <span class="tt">node <a class="el" href="server_8js.html">server.js</a></span> dans un terminal</li>
+<li>Lancer <span class="tt">npm run dev</span> dans un autre terminal</li>
+<li>Ouvrir <b><a href="http://localhost:5173">http://localhost:5173</a></b> dans le navigateur</li>
+<li>Le badge passe à "🟢 STM32 connecté" → prêt à jouer !</li>
+</ol>
+<dl class="section author"><dt>Auteur</dt><dd>SESSOU Winsou Richard et MAZIRE Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2026 </dd></dl>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le <span class="timestamp"></span> pour Projet SYS3046 - Jeu de Duel STM32 par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "jeu-stm32-server",
+  "version": "1.0.0",
+  "description": "Bridge STM32 ↔ WebSocket pour le jeu de duel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^12.0.0",
+    "serialport": "^12.0.0",
+    "ws": "^8.0.0"
+  }
+}
